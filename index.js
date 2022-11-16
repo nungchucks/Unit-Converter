@@ -101,7 +101,6 @@ class temperatorConverter { //Handle temperature conversions
 
 class distanceConverter { //Handle distance conversions
     constructor() {
-        this.distance = distanceInput.value; 
     }
     convert() {
         for (let i = 0; i < options.length; i++) {
@@ -150,7 +149,6 @@ class currencyConverter { //Handle currency conversions
 
 class weightConverter {
     constructor() {
-        this.weight = weightInput.value; 
     }
     convert() {
         for (let i = 0; i < options.length; i++) {

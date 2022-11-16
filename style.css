@@ -1,5 +1,5 @@
 body{
-    background-color: #1e1d1d;
+    background-color: #201d1d;
 }
 #header{
     color: white;
@@ -8,7 +8,7 @@ body{
     display: flex;
     justify-content: center;
     font-size: 60px;
-    background-color: rgb(19, 106, 59);
+    background-color: rgb(224, 166, 86);
     margin-top: -10px;
 }
 #conversionChoiceText{
