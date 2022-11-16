@@ -1,3 +1,4 @@
+//Import HTML elements as variables 
 const submitButton = document.getElementById("submitButton");
 const clearButton = document.getElementById("clearButton")
 const endButton = document.getElementById("endButton")
@@ -20,15 +21,10 @@ const distanceInput = document.getElementById("distanceInput");
 const currencyInput = document.getElementById("currencyInput"); 
 const weightInput = document.getElementById("weightInput"); 
 let converter; let converted; 
-var options = document.getElementsByName("conversion")
+var options = document.getElementsByName("conversion") //Get all possible conversions by name 
 returnPrompt.style.display = 'none';
 
-let findSelected = () => {
-    let selected = document.querySelector('input[name="unit"]:checked')
-    return (selected.id);
-}
-
-function showTemperaturePrompt() {
+function showTemperaturePrompt() { //Display options for temperature conversion 
     distanceChoices.style.display ="none"; 
     weightChoices.style.display ="none"; 
     currencyChoices.style.display ="none"; 
@@ -39,7 +35,7 @@ function showTemperaturePrompt() {
     temperatureChoices.style.display = "block"; 
 }
 
-function showDistancePrompt() {
+function showDistancePrompt() { //Display options for distance conversion 
     temperatureChoices.style.display ="none"; 
     weightChoices.style.display ="none"; 
     currencyChoices.style.display ="none"; 
@@ -50,7 +46,7 @@ function showDistancePrompt() {
 
 }
 
-function showCurrencyPrompt() {
+function showCurrencyPrompt() { //Display options for currency conversion 
     temperatureChoices.style.display ="none"; 
     weightChoices.style.display ="none"; 
     distanceChoices.style.display ="none"; 
@@ -61,7 +57,7 @@ function showCurrencyPrompt() {
 
 }
 
-function showWeightPrompt() {
+function showWeightPrompt() { //Display options for weight conversion 
     temperatureChoices.style.display ="none"; 
     currencyChoices.style.display ="none"; 
     distanceChoices.style.display ="none"; 
@@ -71,12 +67,12 @@ function showWeightPrompt() {
     returnPrompt.style.display = 'block';
 
 }
-class temperatorConverter {
+class temperatorConverter { //Handle temperature conversions 
     constructor() {
         this.temperature = temperatureInput.value; 
     }
     convert() {
-        for (let i = 0; i < options.length; i++) {
+        for (let i = 0; i < options.length; i++) { //Return what type of conversion to do according to ID 
             if (options[i].checked) {
                 var conversion = options[i].id; 
             }
@@ -103,7 +99,7 @@ class temperatorConverter {
     }
 }
 
-class distanceConverter {
+class distanceConverter { //Handle distance conversions
     constructor() {
         this.distance = distanceInput.value; 
     }
@@ -122,9 +118,8 @@ class distanceConverter {
     }
 }
 
-class currencyConverter {
+class currencyConverter { //Handle currency conversions
     constructor() {
-        this.currency = currencyInput.value; 
     }
     convert() {
         for (let i = 0; i < options.length; i++) {
@@ -132,10 +127,10 @@ class currencyConverter {
                 var conversion = options[i].id; 
             }
             if (conversion === "usdToEUR") {
-                returnText.innerHTML = (`${currencyInput.value} USD is ${Number(currencyInput.value * 0.9585799).toFixed(2)} EUR`) 
+                returnText.innerHTML = (`${currencyInput.value} USD is ${Number(currencyInput.value * 0.9642321).toFixed(2)} EUR`) 
             }
             else if (conversion === "eurToUSD") {
-                returnText.innerHTML = (`${currencyInput.value} EUR is ${Number(currencyInput.value / 0.9585799).toFixed(2)} USD`) 
+                returnText.innerHTML = (`${currencyInput.value} EUR is ${Number(currencyInput.value / 0.9642321).toFixed(2)} USD`) 
             }
             else if (conversion === "usdToYEN") {
                 returnText.innerHTML = (`${currencyInput.value} USD is ${Number(currencyInput.value * 138.63008).toFixed(2)} YEN`) 
@@ -174,7 +169,12 @@ class weightConverter {
 
 function convertWeight() {
     const weightconverter = new weightConverter; 
+    if (weightInput.value < 0) {
+        returnText.innerHTML = "Please enter a valid weight"
+    }   
+    else {
     weightconverter.convert(); 
+    }
 }
 
 function convertTemperature() {
@@ -184,7 +184,13 @@ function convertTemperature() {
 
 function convertDistance() {
     const distConverter = new distanceConverter; 
-    distConverter.convert(); 
+    if (distanceInput.value < 0) {
+        resetValue()
+        returnText.innerHTML = "Please enter a valid distance"
+    }   
+    else {
+        distConverter.convert(); 
+    }
 }
 
 function convertCurrency() {
@@ -192,8 +198,7 @@ function convertCurrency() {
     currConverter.convert(); 
 }
 
-
-function resetValue() {
+function resetValue() { //Removes text following conversion 
     returnText.innerHTML = ""
     distanceInput.value = null; 
     currencyInput.value = null; 
@@ -202,16 +207,7 @@ function resetValue() {
 
 }
 
-submitButton.addEventListener('click', convertTemperature);
-submitButton.addEventListener('click', convertDistance);
-submitButton.addEventListener('click', convertWeight);
-submitButton.addEventListener('click', convertCurrency);
-
-clearButton.addEventListener('click', resetValue)
-
-endButton.addEventListener('click', endProgram)
-
-function endProgram() {
+function endProgram() { //Clear screen and display ending message 
     document.body.innerHTML="Thanks for joining me in Conversion Central."; 
     document.body.style.fontSize = '50px'; 
     document.body.style.display = "flex"; 
@@ -221,3 +217,10 @@ function endProgram() {
     document.body.style.minHeight = "100vh"; 
     document.body.style.color = 'white';
 }
+
+submitButton.addEventListener('click', convertTemperature);
+submitButton.addEventListener('click', convertDistance);
+submitButton.addEventListener('click', convertWeight);
+submitButton.addEventListener('click', convertCurrency);
+clearButton.addEventListener('click', resetValue)
+endButton.addEventListener('click', endProgram)
