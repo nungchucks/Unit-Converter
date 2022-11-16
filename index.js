@@ -22,7 +22,7 @@ const currencyInput = document.getElementById("currencyInput");
 const weightInput = document.getElementById("weightInput"); 
 let converter; let converted; 
 var options = document.getElementsByName("conversion") //Get all possible conversions by name 
-returnPrompt.style.display = 'none';
+// returnPrompt.style.display = 'none';
 
 function showTemperaturePrompt() { //Display options for temperature conversion 
     distanceChoices.style.display ="none"; 
@@ -203,7 +203,12 @@ function convertCurrency() {
     }
 }
 
-function resetValue() { //Removes text and resets values after a conversion 
+function resetValue(){ //Removes text and resets values after a conversion  
+    for (let i = 0; i < options.length; i++) {
+        if (options[i].checked) {
+            options[i].checked = false; 
+        }
+    }
     returnText.innerHTML = ""
     distanceInput.value = null; 
     currencyInput.value = null; 
@@ -222,9 +227,14 @@ function endProgram() { //Clear screen and display ending message
     document.body.style.color = 'white';
 }
 
+//Perform conversions after submit button is clicked
 submitButton.addEventListener('click', convertTemperature);
 submitButton.addEventListener('click', convertDistance);
 submitButton.addEventListener('click', convertWeight);
 submitButton.addEventListener('click', convertCurrency);
+
+//Reset all values to default state
 clearButton.addEventListener('click', resetValue)
+
+//Clear screen and display end message 
 endButton.addEventListener('click', endProgram)
