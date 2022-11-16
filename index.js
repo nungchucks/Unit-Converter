@@ -31,7 +31,6 @@ function showTemperaturePrompt() { //Display options for temperature conversion
     unitChoices.style.display ="block";
     returnText.innerHTML = " "; 
     returnPrompt.style.display = 'block';
-
     temperatureChoices.style.display = "block"; 
 }
 
@@ -69,7 +68,6 @@ function showWeightPrompt() { //Display options for weight conversion
 }
 class temperatorConverter { //Handle temperature conversions 
     constructor() {
-        this.temperature = temperatureInput.value; 
     }
     convert() {
         for (let i = 0; i < options.length; i++) { //Return what type of conversion to do according to ID 
@@ -78,22 +76,22 @@ class temperatorConverter { //Handle temperature conversions
             }
             converter = Number(temperatureInput); 
             if (conversion === "fToC") {
-                returnText.innerHTML = (`${temperatureInput.value} °F is ${Number((temperatureInput.value - 32) * 5/9).toFixed(2)} °C`); 
+                returnText.innerHTML = (`${temperatureInput.value}°F is ${Number((temperatureInput.value - 32) * 5/9).toFixed(2)}°C`); 
             }
             else if (conversion === "cToF") {
-                returnText.innerHTML = (`${temperatureInput.value} °C is ${Number((temperatureInput.value * 9/5) + 32).toFixed(2)} °F`); 
+                returnText.innerHTML = (`${temperatureInput.value}°C is ${Number((temperatureInput.value * 9/5) + 32).toFixed(2)}°F`); 
             }
             else if (conversion === "fToK") {
-                returnText.innerHTML = (`${temperatureInput.value} °F is ${Number((temperatureInput.value -32) * 5/9 + 273.15).toFixed(2)} °K`); 
+                returnText.innerHTML = (`${temperatureInput.value}°F is ${Number((temperatureInput.value -32) * 5/9 + 273.15).toFixed(2)}°K`); 
             }
             else if (conversion === "kToF") {
-                returnText.innerHTML = (`${temperatureInput.value} °K is ${Number((temperatureInput.value-273.15) * 9/5 + 32).toFixed(2)} °F`); 
+                returnText.innerHTML = (`${temperatureInput.value}°K is ${Number((temperatureInput.value-273.15) * 9/5 + 32).toFixed(2)}°F`); 
             }
             else if (conversion === "cToK") {
-                returnText.innerHTML =(`${(temperatureInput.value)} °C is ${Number((+temperatureInput.value + +273.15)).toFixed(2)} °K`); 
+                returnText.innerHTML =(`${(temperatureInput.value)}°C is ${Number((+temperatureInput.value + +273.15)).toFixed(2)}°K`); 
             }
             else if (conversion === "kToC") {
-                returnText.innerHTML =(`${(temperatureInput.value)} °K is ${Number((temperatureInput.value) - 273.15).toFixed(2)} °C`); 
+                returnText.innerHTML =(`${(temperatureInput.value)}°K is ${Number((temperatureInput.value) - 273.15).toFixed(2)}°C`); 
             }
         }
     }
@@ -165,23 +163,23 @@ class weightConverter {
     }
 }
 
-function convertWeight() {
+let convertWeight = () => {
     const weightconverter = new weightConverter; 
-    if (weightInput.value < 0) {
+    if (weightInput.value < 0) { //Validate input 
         resetValue()
         returnText.innerHTML = "Please enter a valid weight"
     }   
-    else {
+    else { //Run if input is valid 
     weightconverter.convert(); 
     }
 }
 
-function convertTemperature() { 
+let convertTemperature = () => { 
     const tempConverter = new temperatorConverter; 
     tempConverter.convert(); 
 }
 
-function convertDistance() {
+let convertDistance = () => {
     const distConverter = new distanceConverter; 
     if (distanceInput.value < 0) {
         resetValue()
@@ -192,7 +190,7 @@ function convertDistance() {
     }
 }
 
-function convertCurrency() {
+let convertCurrency = () => {
     const currConverter = new currencyConverter; 
     if (currencyInput.value < 0) {
         resetValue()
@@ -203,7 +201,7 @@ function convertCurrency() {
     }
 }
 
-function resetValue(){ //Removes text and resets values to default  
+resetValue = () => { //Removes text and resets values to default  
     for (let i = 0; i < options.length; i++) {
         if (options[i].checked) {
             options[i].checked = false; 
@@ -227,7 +225,7 @@ function endProgram() { //Clear screen and display ending message
     document.body.style.color = 'white';
 }
 
-//Performs conversion after submit button is clicked with the coressponding unit selected
+//Performs conversion after submit button is clicked accroding to the selected unit 
 submitButton.addEventListener('click', convertTemperature);
 submitButton.addEventListener('click', convertDistance);
 submitButton.addEventListener('click', convertWeight);
