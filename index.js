@@ -170,6 +170,7 @@ class weightConverter {
 function convertWeight() {
     const weightconverter = new weightConverter; 
     if (weightInput.value < 0) {
+        resetValue()
         returnText.innerHTML = "Please enter a valid weight"
     }   
     else {
@@ -195,16 +196,21 @@ function convertDistance() {
 
 function convertCurrency() {
     const currConverter = new currencyConverter; 
+    if (currencyInput.value < 0) {
+        resetValue()
+        returnText.innerHTML = "Please enter a valid amount"
+    }   
+    else {
     currConverter.convert(); 
+    }
 }
 
-function resetValue() { //Removes text following conversion 
+function resetValue() { //Removes text and resets values after a conversion 
     returnText.innerHTML = ""
     distanceInput.value = null; 
     currencyInput.value = null; 
     weightInput.value = null; 
     temperatureInput.value = null; 
-
 }
 
 function endProgram() { //Clear screen and display ending message 
