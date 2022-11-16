@@ -176,7 +176,7 @@ function convertWeight() {
     }
 }
 
-function convertTemperature() {
+function convertTemperature() { 
     const tempConverter = new temperatorConverter; 
     tempConverter.convert(); 
 }
@@ -203,7 +203,7 @@ function convertCurrency() {
     }
 }
 
-function resetValue(){ //Removes text and resets values after a conversion  
+function resetValue(){ //Removes text and resets values to default  
     for (let i = 0; i < options.length; i++) {
         if (options[i].checked) {
             options[i].checked = false; 
@@ -227,7 +227,7 @@ function endProgram() { //Clear screen and display ending message
     document.body.style.color = 'white';
 }
 
-//Perform conversions after submit button is clicked
+//Performs conversion after submit button is clicked with the coressponding unit selected
 submitButton.addEventListener('click', convertTemperature);
 submitButton.addEventListener('click', convertDistance);
 submitButton.addEventListener('click', convertWeight);
