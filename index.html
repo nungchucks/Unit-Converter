@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Conversion Central</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <div id="header">
     <h1 id="headerText">Welcome to Conversion Central</h1>
     <div>
@@ -15,95 +16,97 @@
     </div>
 </div>
 <div id="conversionChoices">
-    <input type="radio" id="temperature" name="value" value="temperature" onchange="showTemperaturePrompt()">
+    <input type="radio" id="temperature" name="value" onchange="showTemperaturePrompt()">
     <label for="temperature" id="temperatureLabel">Temperature</label><br>
-    <input type="radio" id="distance" name="value" value="temperature" onchange="showDistancePrompt()">
+    <input type="radio" id="distance" name="value" onchange="showDistancePrompt()">
     <label for="distance">Distance</label><br>
-    <input type="radio" id="currency" name="value" value="temperature" onchange="showCurrencyPrompt()">
+    <input type="radio" id="currency" name="value" onchange="showCurrencyPrompt()">
     <label for="temperature">Currency</label><br>
-    <input type="radio" id="weight" name="value" value="temperature" onchange="showWeightPrompt()">  
+    <input type="radio" id="weight" name="value" onchange="showWeightPrompt()">  
     <label for="weight">Weight</label><br>
-    <input type="radio" id="quit" name="value" value="quit">
-    <label for="quit">Quit</label><br>
 </div>
 
 <div id="returnValue">
-    <div id="returnPrompt" >
-        <p style="font-size: 25px">What type of conversion would you like to make?</p>
-    </div>
 
     <div hidden id="unitChoices">
+        <p id="returnPrompt" style="font-size: 30px" style="display: none">What units would you like to convert: </p>
+
         <div hidden id="temperatureChoices">
-            <input type="radio" id="fToC" name="temperature">
+            <input type="radio" id="fToC" name="conversion">
             <label for="fToC">Fahrenheit to Celsius</label><br>
-            <input type="radio" id="cToF" name="temperature">
+            <input type="radio" id="cToF" name="conversion">
             <label for="cToF">Celsius to Fahrenheit</label><br>
-            <input type="radio" id="fToK" name="temperature">
+            <input type="radio" id="fToK" name="conversion">
             <label for="fToK">Fahrenheit to Kelvin</label><br>
-            <input type="radio" id="kToF" name="temperature">
+            <input type="radio" id="kToF" name="conversion">
             <label for="kToF">Kelvin to Fahrenheit</label><br>
-            <input type="radio" id="cToK" name="temperature">
+            <div id="kelvinButtons">
+            <input type="radio" id="cToK" name="conversion">
             <label for="cToK">Celsius to Kelvin</label><br>
-            <input type="radio" id="kToC" name="temperature">
+            <input type="radio" id="kToC" name="conversion">
             <label for="kToC">Kelvin to Celsius</label><br>
-            <div id="temperatureTextBox">
+            </div>
+            <div class="inputBox" id="temperatureTextBox">
                 <label for="temperatureInputLabel">Enter a temperature:</label><br>
                 <input type="text" id="temperatureInput" name="temperature">
             </div>
         </div>
 
         <div hidden id="distanceChoices" >
-            <input type="radio" id="mToKM" name="distance">
+            <input type="radio" id="mToKM" name="conversion">
             <label for="mToKM">Miles to Kilometers</label><br>
-            <input type="radio" id="kmToM" name="distance">
+            <input type="radio" id="kmToM" name="conversion">
             <label for="kmToM">Kilometers to Miles</label><br>
-            <div id="distanceTextBox">
+            <div class="inputBox" id="distanceTextBox">
                 <label for="distanceInputLabel">Enter a distance:</label><br>
                 <input type="text" id="distanceInput" name="distance">
             </div>
 
         </div>
         <div hidden id="currencyChoices" >
-            <input type="radio" id="usdToEUR" name="currency">
+            <input type="radio" id="usdToEUR" name="conversion">
             <label for="usdToEUR">USD to EUR</label><br>
-            <input type="radio" id="eurToUSD" name="currency">
+            <input type="radio" id="eurToUSD" name="conversion">
             <label for="eurToUSD">EUR to USD</label><br>
-            <input type="radio" id="usdToYEN" name="currency">
+            <input type="radio" id="usdToYEN" name="conversion">
             <label for="usdToYEN">USD to YEN</label><br>
-            <input type="radio" id="eurToYEN" name="currency">
+            <input type="radio" id="eurToYEN" name="conversion">
             <label for="eurToYEN">EUR to YEN</label><br>
-            <input type="radio" id="yenToUSD" name="currency"> 
+            <input type="radio" id="yenToUSD" name="conversion"> 
             <label for="yenToUSD">YEN to USD</label><br>
-            <input type="radio" id="yenToEUR" name="currency">
+            <input type="radio" id="yenToEUR" name="conversion">
             <label for="yenToEUR">YEN to EUR</label><br>
-            <div id="currencyTextBox">
+            <div class="inputBox" id="currencyTextBox">
                 <label for="currencyInputLabel">Enter an amount:</label><br>
                 <input type="text" id="currencyInput" name="currency">
             </div>
 
         </div>
         <div hidden id="weightChoices">
-            <input type="radio" id="lbsToKG" name="weight">
+            <input type="radio" id="lbsToKG" name="conversion">
             <label for="lbsToKG">Pounds to Kilograms</label><br>
-            <input type="radio" id="kgToLbs" name="weight">
+            <input type="radio" id="kgToLBS" name="conversion">
             <label for="kgToLbs">Kilograms to Pounds</label>
-            <div id="weightTextBox">
+            <div class="inputBox" id="weightTextBox">
                 <label for="weightInputLabel">Enter a weight:</label><br>
                 <input type="text" id="weightInput" name="weight">
             </div>
         </div>
     </div>
+
 </div>
+
+<div id="return">
 <h1 id="returnText">
     
 </h1>
+</div>
 
 <div id="actionsContainer">
     <button type="radio" id="submitButton" name="action" value="submit">Submit</button>
     <button type="radio" id="clearButton" name="action">Clear</button>
     <button type="radio" id="endButton" name="action" value="end">End</button>
 </div>
-
 
 
 <script src="index.js"></script>
