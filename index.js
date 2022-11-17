@@ -21,6 +21,7 @@ const distanceInput = document.getElementById("distanceInput");
 const currencyInput = document.getElementById("currencyInput"); 
 const weightInput = document.getElementById("weightInput"); 
 var options = document.getElementsByName("conversion") //Get all possible conversions by name 
+var notANumber = NaN;
 
 showTemperaturePrompt = () => { //Display options for temperature conversion 
     distanceChoices.style.display ="none"; 
@@ -168,8 +169,8 @@ class weightConverter {
 
 let convertWeight = () => {
     const weightconverter = new weightConverter; 
-    if (weightInput.value < 0) { //Validate input 
-        resetValue()
+    if (weightInput.value < 0 || isNaN(weightInput.value)) { //Validate input 
+        resetValue(); 
         returnText.innerHTML = "Please enter a valid weight"
     }   
     else { //Run if input valid
@@ -179,12 +180,18 @@ let convertWeight = () => {
 
 let convertTemperature = () => { 
     const tempConverter = new temperatorConverter; 
+    if (isNaN(temperatureInput.value)) {
+        resetValue()
+        returnText.innerHTML = "Please enter a valid temperature"
+    }
+    else {
     tempConverter.convert(); 
+    }
 }
 
 let convertDistance = () => {
     const distConverter = new distanceConverter; 
-    if (distanceInput.value < 0) {
+    if (distanceInput.value < 0 || isNaN(distanceInput.value)) {
         resetValue()
         returnText.innerHTML = "Please enter a valid distance"
     }   
@@ -195,7 +202,7 @@ let convertDistance = () => {
 
 let convertCurrency = () => {
     const currConverter = new currencyConverter; 
-    if (currencyInput.value < 0) {
+    if (currencyInput.value < 0 || isNaN(currencyInput.value)) {
         resetValue()
         returnText.innerHTML = "Please enter a valid amount"
     }   
