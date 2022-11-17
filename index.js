@@ -20,9 +20,7 @@ const temperatureInput = document.getElementById("temperatureInput")
 const distanceInput = document.getElementById("distanceInput");
 const currencyInput = document.getElementById("currencyInput"); 
 const weightInput = document.getElementById("weightInput"); 
-let converter; let converted; 
 var options = document.getElementsByName("conversion") //Get all possible conversions by name 
-// returnPrompt.style.display = 'none';
 
 function showTemperaturePrompt() { //Display options for temperature conversion 
     distanceChoices.style.display ="none"; 
@@ -42,7 +40,6 @@ function showDistancePrompt() { //Display options for distance conversion
     distanceChoices.style.display = "block"; 
     returnText.innerHTML = " "; 
     returnPrompt.style.display = 'block';
-
 }
 
 function showCurrencyPrompt() { //Display options for currency conversion 
@@ -53,7 +50,6 @@ function showCurrencyPrompt() { //Display options for currency conversion
     currencyChoices.style.display = "block"; 
     returnText.innerHTML = " "; 
     returnPrompt.style.display = 'block';
-
 }
 
 function showWeightPrompt() { //Display options for weight conversion 
@@ -64,8 +60,8 @@ function showWeightPrompt() { //Display options for weight conversion
     weightChoices.style.display = "block"; 
     returnText.innerHTML = " "; 
     returnPrompt.style.display = 'block';
-
 }
+
 class temperatorConverter { //Handle temperature conversions 
     constructor() {
     }
@@ -74,7 +70,7 @@ class temperatorConverter { //Handle temperature conversions
             if (options[i].checked) {
                 var conversion = options[i].id; 
             }
-            converter = Number(temperatureInput); 
+            // converter = Number(temperatureInput); 
             if (conversion === "fToC") {
                 returnText.innerHTML = (`${temperatureInput.value}°F is ${Number((temperatureInput.value - 32) * 5/9).toFixed(2)}°C`); 
             }
@@ -169,7 +165,7 @@ let convertWeight = () => {
         resetValue()
         returnText.innerHTML = "Please enter a valid weight"
     }   
-    else { //Run if input is valid 
+    else { //Run if input valid
     weightconverter.convert(); 
     }
 }
@@ -201,6 +197,11 @@ let convertCurrency = () => {
     }
 }
 
+submitButton.addEventListener('click', convertTemperature);
+submitButton.addEventListener('click', convertDistance);
+submitButton.addEventListener('click', convertWeight);
+submitButton.addEventListener('click', convertCurrency);
+
 resetValue = () => { //Removes text and resets values to default  
     for (let i = 0; i < options.length; i++) {
         if (options[i].checked) {
@@ -226,10 +227,7 @@ function endProgram() { //Clear screen and display ending message
 }
 
 //Performs conversion after submit button is clicked accroding to the selected unit 
-submitButton.addEventListener('click', convertTemperature);
-submitButton.addEventListener('click', convertDistance);
-submitButton.addEventListener('click', convertWeight);
-submitButton.addEventListener('click', convertCurrency);
+
 
 //Reset all values to default state
 clearButton.addEventListener('click', resetValue)

@@ -36,15 +36,17 @@
             <label for="fToC">Fahrenheit to Celsius</label><br>
             <input type="radio" id="cToF" name="conversion">
             <label for="cToF">Celsius to Fahrenheit</label><br>
-            <input type="radio" id="fToK" name="conversion">
-            <label for="fToK">Fahrenheit to Kelvin</label><br>
-            <input type="radio" id="kToF" name="conversion">
-            <label for="kToF">Kelvin to Fahrenheit</label><br>
+            <div id="ftoKS">
+                <input type="radio" id="fToK" name="conversion">
+                <label for="fToK">Fahrenheit to Kelvin</label><br>
+                <input type="radio" id="kToF" name="conversion">
+                <label for="kToF">Kelvin to Fahrenheit</label><br>
+            </div>
             <div id="kelvinButtons">
-            <input type="radio" id="cToK" name="conversion">
-            <label for="cToK">Celsius to Kelvin</label><br>
-            <input type="radio" id="kToC" name="conversion">
-            <label for="kToC">Kelvin to Celsius</label><br>
+                <input type="radio" id="cToK" name="conversion">
+                <label for="cToK">Celsius to Kelvin</label><br>
+                <input type="radio" id="kToC" name="conversion">
+                <label for="kToC">Kelvin to Celsius</label><br>
             </div>
             <div class="inputBox" id="temperatureTextBox">
                 <label for="temperatureInputLabel">Enter a temperature:</label><br>
@@ -98,7 +100,7 @@
 
 <div id="return">
 <h1 id="returnText">
-    
+
 </h1>
 </div>
 
@@ -107,7 +109,6 @@
     <button type="radio" id="clearButton" name="action">Clear</button>
     <button type="radio" id="endButton" name="action" value="end">End</button>
 </div>
-
 
 <script src="index.js"></script>
 </body>

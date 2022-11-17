@@ -11,12 +11,6 @@ body{
     background-color: rgb(65, 86, 190);
     margin-top: -10px;
 }
-#conversionChoiceText{
-    display: flex;
-    justify-content: center;
-    font-size: 40px;
-    margin-top: -20px;
-}
 #actionsContainer {
     color: white;
     padding-top: 20px;
@@ -29,6 +23,12 @@ body{
     color: white;
     column-gap: 10px;
     font-size: 30px;
+}
+#conversionChoiceText{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    margin-top: -20px;
 }
 button {
     margin-top: -20px;
@@ -60,6 +60,10 @@ input[type=text] {
     margin-top: 18px;
     font-size: 25px;
 }
+input[type='radio'] { 
+    transform: scale(1.6); 
+    background-color: #d1d3d1;
+}
 #return {
     display: flex;
     font-size: 15px;
@@ -71,10 +75,6 @@ input[type=text] {
     font-size: 30px;
     margin-left: -290px;
     text-align: center;
-}
-input[type='radio'] { 
-    transform: scale(1.6); 
-    background-color: #d1d3d1;
 }
 #returnValue {
     display: flex;
@@ -96,5 +96,8 @@ input[type='radio'] {
     margin-top: 5px;
 }
 #kelvinButtons {
-    padding-right: 40px;
+    padding-right: 48px;
+}
+#ftoKS{
+    padding-right: 8px;
 }
