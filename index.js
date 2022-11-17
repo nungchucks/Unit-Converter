@@ -22,7 +22,7 @@ const currencyInput = document.getElementById("currencyInput");
 const weightInput = document.getElementById("weightInput"); 
 var options = document.getElementsByName("conversion") //Get all possible conversions by name 
 
-function showTemperaturePrompt() { //Display options for temperature conversion 
+showTemperaturePrompt = () => { //Display options for temperature conversion 
     distanceChoices.style.display ="none"; 
     weightChoices.style.display ="none"; 
     currencyChoices.style.display ="none"; 
@@ -32,7 +32,7 @@ function showTemperaturePrompt() { //Display options for temperature conversion
     temperatureChoices.style.display = "block"; 
 }
 
-function showDistancePrompt() { //Display options for distance conversion 
+showDistancePrompt = () => { //Display options for distance conversion 
     temperatureChoices.style.display ="none"; 
     weightChoices.style.display ="none"; 
     currencyChoices.style.display ="none"; 
@@ -42,7 +42,7 @@ function showDistancePrompt() { //Display options for distance conversion
     returnPrompt.style.display = 'block';
 }
 
-function showCurrencyPrompt() { //Display options for currency conversion 
+showCurrencyPrompt = () => { //Display options for currency conversion 
     temperatureChoices.style.display ="none"; 
     weightChoices.style.display ="none"; 
     distanceChoices.style.display ="none"; 
@@ -52,7 +52,7 @@ function showCurrencyPrompt() { //Display options for currency conversion
     returnPrompt.style.display = 'block';
 }
 
-function showWeightPrompt() { //Display options for weight conversion 
+showWeightPrompt = () => { //Display options for weight conversion 
     temperatureChoices.style.display ="none"; 
     currencyChoices.style.display ="none"; 
     distanceChoices.style.display ="none"; 
@@ -70,24 +70,25 @@ class temperatorConverter { //Handle temperature conversions
             if (options[i].checked) {
                 var conversion = options[i].id; 
             }
-            // converter = Number(temperatureInput); 
-            if (conversion === "fToC") {
-                returnText.innerHTML = (`${temperatureInput.value}°F is ${Number((temperatureInput.value - 32) * 5/9).toFixed(2)}°C`); 
-            }
-            else if (conversion === "cToF") {
-                returnText.innerHTML = (`${temperatureInput.value}°C is ${Number((temperatureInput.value * 9/5) + 32).toFixed(2)}°F`); 
-            }
-            else if (conversion === "fToK") {
-                returnText.innerHTML = (`${temperatureInput.value}°F is ${Number((temperatureInput.value -32) * 5/9 + 273.15).toFixed(2)}°K`); 
-            }
-            else if (conversion === "kToF") {
-                returnText.innerHTML = (`${temperatureInput.value}°K is ${Number((temperatureInput.value-273.15) * 9/5 + 32).toFixed(2)}°F`); 
-            }
-            else if (conversion === "cToK") {
-                returnText.innerHTML =(`${(temperatureInput.value)}°C is ${Number((+temperatureInput.value + +273.15)).toFixed(2)}°K`); 
-            }
-            else if (conversion === "kToC") {
-                returnText.innerHTML =(`${(temperatureInput.value)}°K is ${Number((temperatureInput.value) - 273.15).toFixed(2)}°C`); 
+            switch(conversion) {
+                case "fToC": 
+                    returnText.innerHTML = (`${temperatureInput.value}°F is ${Number((temperatureInput.value - 32) * 5/9).toFixed(2)}°C`); 
+                    break;
+                case "cToF":
+                    returnText.innerHTML = (`${temperatureInput.value}°C is ${Number((temperatureInput.value * 9/5) + 32).toFixed(2)}°F`); 
+                    break; 
+                case "fToK": 
+                    returnText.innerHTML = (`${temperatureInput.value}°F is ${Number((temperatureInput.value -32) * 5/9 + 273.15).toFixed(2)}°K`); 
+                    break; 
+                case "kToF": 
+                    returnText.innerHTML = (`${temperatureInput.value}°K is ${Number((temperatureInput.value-273.15) * 9/5 + 32).toFixed(2)}°F`); 
+                    break; 
+                case "cToK": 
+                    returnText.innerHTML =(`${(temperatureInput.value)}°C is ${Number((+temperatureInput.value + +273.15)).toFixed(2)}°K`); 
+                    break; 
+                case "kToC": 
+                    returnText.innerHTML =(`${(temperatureInput.value)}°K is ${Number((temperatureInput.value) - 273.15).toFixed(2)}°C`); 
+                    break; 
             }
         }
     }
@@ -101,11 +102,13 @@ class distanceConverter { //Handle distance conversions
             if (options[i].checked) {
                 var conversion = options[i].id; 
             }
-            if (conversion === "mToKM") {
-                returnText.innerHTML = (`${distanceInput.value} miles is ${Number(distanceInput.value * 1.609344).toFixed(2)} kilometers`) 
-            }
-            else if (conversion === "kmToM") {
-                returnText.innerHTML = (`${distanceInput.value} kilometers is ${Number(distanceInput.value / 1.609344).toFixed(2)} miles`) 
+            switch(conversion) {
+                case "mToKM": 
+                    returnText.innerHTML = (`${distanceInput.value} miles is ${Number(distanceInput.value * 1.609344).toFixed(2)} kilometers`) 
+                    break; 
+                case "kmToM": 
+                    returnText.innerHTML = (`${distanceInput.value} kilometers is ${Number(distanceInput.value / 1.609344).toFixed(2)} miles`) 
+                    break; 
             }
         }
     }
@@ -119,23 +122,25 @@ class currencyConverter { //Handle currency conversions
             if (options[i].checked) {
                 var conversion = options[i].id; 
             }
-            if (conversion === "usdToEUR") {
-                returnText.innerHTML = (`${currencyInput.value} USD is ${Number(currencyInput.value * 0.9642321).toFixed(2)} EUR`) 
-            }
-            else if (conversion === "eurToUSD") {
-                returnText.innerHTML = (`${currencyInput.value} EUR is ${Number(currencyInput.value / 0.9642321).toFixed(2)} USD`) 
-            }
-            else if (conversion === "usdToYEN") {
-                returnText.innerHTML = (`${currencyInput.value} USD is ${Number(currencyInput.value * 138.63008).toFixed(2)} YEN`) 
-            }
-            else if (conversion === "eurToYEN") {
-                returnText.innerHTML = (`${currencyInput.value} EUR is ${Number(currencyInput.value * 144.65463).toFixed(2)} YEN`) 
-            }
-            else if (conversion === "yenToUSD") {
-                returnText.innerHTML = (`${currencyInput.value} YEN is ${Number(currencyInput.value / 138.63008).toFixed(2)} USD`) 
-            }
-            else if (conversion === "yenToEUR") {
-                returnText.innerHTML = (`${currencyInput.value} YEN is ${Number(currencyInput.value / 144.65463).toFixed(2)} EUR`) 
+            switch (conversion) {
+                case ("usdToEUR"):
+                    returnText.innerHTML = (`${currencyInput.value} USD is ${Number(currencyInput.value * 0.9642321).toFixed(2)} EUR`) 
+                    break; 
+                case "eurToUSD":
+                    returnText.innerHTML = (`${currencyInput.value} EUR is ${Number(currencyInput.value / 0.9642321).toFixed(2)} USD`) 
+                    break 
+                case "usdToYEN": 
+                    returnText.innerHTML = (`${currencyInput.value} USD is ${Number(currencyInput.value * 138.63008).toFixed(2)} YEN`) 
+                    break; 
+                case "eurToYEN": 
+                    returnText.innerHTML = (`${currencyInput.value} EUR is ${Number(currencyInput.value * 144.65463).toFixed(2)} YEN`) 
+                    break; 
+                case "yenToUSD": 
+                    returnText.innerHTML = (`${currencyInput.value} YEN is ${Number(currencyInput.value / 138.63008).toFixed(2)} USD`) 
+                    break; 
+                case "yenToEUR": 
+                    returnText.innerHTML = (`${currencyInput.value} YEN is ${Number(currencyInput.value / 144.65463).toFixed(2)} EUR`) 
+                    break; 
             }
         }
     }
@@ -149,11 +154,13 @@ class weightConverter {
             if (options[i].checked) {
                 var conversion = options[i].id; 
             }
-            if (conversion === "lbsToKG") {
-                returnText.innerHTML = (`${weightInput.value} pounds is ${Number(weightInput.value / 2.205).toFixed(2)} kilograms`) 
-            }
-            else if (conversion === "kgToLBS") {
-                returnText.innerHTML = (`${weightInput.value} kilograms is ${Number(weightInput.value * 2.205).toFixed(2)} pounds`) 
+            switch (conversion) {
+                case "lbsToKG": 
+                    returnText.innerHTML = (`${weightInput.value} pounds is ${Number(weightInput.value / 2.205).toFixed(2)} kilograms`) 
+                    break; 
+                case "kgToLBS": 
+                    returnText.innerHTML = (`${weightInput.value} kilograms is ${Number(weightInput.value * 2.205).toFixed(2)} pounds`) 
+                    break; 
             }
         }
     }
@@ -197,6 +204,7 @@ let convertCurrency = () => {
     }
 }
 
+//Performs conversion after submit button is clicked accroding to the selected unit 
 submitButton.addEventListener('click', convertTemperature);
 submitButton.addEventListener('click', convertDistance);
 submitButton.addEventListener('click', convertWeight);
@@ -225,9 +233,6 @@ function endProgram() { //Clear screen and display ending message
     document.body.style.minHeight = "100vh"; 
     document.body.style.color = 'white';
 }
-
-//Performs conversion after submit button is clicked accroding to the selected unit 
-
 
 //Reset all values to default state
 clearButton.addEventListener('click', resetValue)
