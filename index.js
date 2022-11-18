@@ -21,7 +21,7 @@ const distanceInput = document.getElementById("distanceInput");
 const currencyInput = document.getElementById("currencyInput"); 
 const weightInput = document.getElementById("weightInput"); 
 const options = document.getElementsByName("conversion") //Get all possible conversion types by name 
-const values = document.getElementsByName("value") //Get all units buttons by name 
+const values = document.getElementsByName("value") //Get all unit buttons by name 
 
 getClickedID = () => { //Get ID of the selected unit and display corresponding conversion options 
     for (let i = 0; i < values.length; i++) {
@@ -192,7 +192,7 @@ resetValue = () => { //Removes text and resets values to default
             options[i].checked = false; 
         }
     }
-    returnText.innerHTML = ""
+    returnText.innerHTML = null; 
     distanceInput.value = null; 
     currencyInput.value = null; 
     weightInput.value = null; 
@@ -203,9 +203,7 @@ endProgram = () => { //Clear screen and display ending message
     document.body.innerHTML="Thanks for joining me in Conversion Central."; 
     document.body.style.fontSize = '50px'; 
     document.body.style.display = "flex"; 
-    document.body.style.justifyContent = 'center'; 
     document.body.style.alignItems = "center"; 
-    document.body.style.textAlign = "center"; 
     document.body.style.minHeight = "100vh"; 
     document.body.style.color = 'white';
 }
